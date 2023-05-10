@@ -50,4 +50,33 @@ public class CourseServiceImpl implements ICourseService {
 			return null;
 	}
 
+	@Override
+	public Course updateCourse(Course course,Long courseId) {
+		
+		list.forEach(c->{
+			if(c.getCourseId()==courseId) {
+				c.setCourseTitle(course.getCourseTitle());
+				c.setCourseDescription(course.getCourseDescription());
+				
+			}
+		});
+			
+		return course;
+	}
+	
+	@Override
+	public void deleteCourse(Long courseId) {
+		
+		try {
+		list.forEach(c->{
+			if(c.getCourseId()==courseId)
+				list.remove(c);
+			
+		});
+		}
+		catch(Exception e) {
+			System.out.println("exception");
+		}
+//		list.stream().filter(null)
+	}
 }
